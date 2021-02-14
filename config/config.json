@@ -1,16 +1,22 @@
 {
   "development": {
-    "database": "express_auth_dev",
+    "username": "halfw",
+    "password": "JimmyB1203!!",
+    "database": "jargon_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "database": "express_auth_test",
+    "username": "halfw",
+    "password": "JimmyB1203!!",
+    "database": "jargon_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "database": "express_auth_prod",
+    "username": "halfw",
+    "password": "JimmyB1203!!",
+    "database": "jargon_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
