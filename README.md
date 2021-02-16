@@ -17,7 +17,7 @@
 - As a registered user, I would like to _connect_ to other registered users
 - As a registered user, I would like to be able to view a feed featuring blog posts from other registered users
 
-**UPDATES**
+**Later Versions**
 
 - As an unregistered user, I would like to be able to view job listings
 - As an unregistered user, I would like to be able to view user profiles

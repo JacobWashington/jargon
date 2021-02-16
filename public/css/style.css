@@ -294,6 +294,10 @@ img{
     justify-items: center;
     margin-bottom: 15rem;
   }
+
+  .landingBtn{
+    width: 20vw;
+  }
 }
 
 @media screen and (min-width: 1024px){
