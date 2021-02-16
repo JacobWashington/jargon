@@ -23,6 +23,11 @@
 - As an unregistered user, I would like to be able to view user profiles
 - As an unregistered user, I would like to be able to view employer profiles
 
+## Screenshots
+![Landing Page](public/assets/images/screenshots/landingPage.PNG)
+![Register](public/assets/images/screenshots/register.PNG)
+
+
 ## Wireframes
 
 ![Landing Page](public/assets/images/wireframes/LandingPage.png)
@@ -35,3 +40,9 @@
 
 **This** diagram represents the initial database structure, necessary to meet MVC.
 ![Database Architecture](public/assets/images/wireframes/DBjargonDiagram.png)
+
+## Future Development
+
+## Credits
+[UI Design](https://github.com/bedimcode/portfolio-responsive-complete)
+[LandingSVG](https://www.humaaans.com/)
