@@ -1,25 +1,38 @@
-require('dotenv').config();
-const express = require('express');
-const layouts = require('express-ejs-layouts');
-const session = require('express-session');
+require("dotenv").config();
+const express = require("express");
+const layouts = require("express-ejs-layouts");
+const session = require("express-session");
 // const passport = require('./config/ppConfig'); //
-const flash = require('connect-flash');
-
+const flash = require("connect-flash");
+const axios = require("axios");
 
 const app = express();
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
 
 // MIDDLEWARE
-app.use(require('morgan')('dev'));
+app.use(require("morgan")("dev"));
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + "/public"));
 app.use(layouts);
 
 // Session Middleware
 
-app.get('/', (req, res) => {
-  res.render('landingPage');
+let newsObj;
+axios
+  .get(
+    `http://api.mediastack.com/v1/news?access_key=${process.env.MEDIASTACK_API_KEY}&sources=cnn,bbc&languages=en&categories=technology,science`
+  )
+  .then((obj) => {
+    newsObj = obj.data;
+  });
+
+app.get("/", (req, res) => {
+  res.render("profile", { newsObj });
 });
+
+// app.get("/", (req, res) => {
+//   res.render("landingPage");
+// });
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
