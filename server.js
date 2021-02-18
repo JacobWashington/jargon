@@ -26,13 +26,13 @@ axios
     newsObj = obj.data;
   });
 
-app.get("/", (req, res) => {
+app.get("/signin", (req, res) => {
   res.render("profile", { newsObj });
 });
 
-// app.get("/", (req, res) => {
-//   res.render("landingPage");
-// });
+app.get("/", (req, res) => {
+  res.render("landingPage");
+});
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {

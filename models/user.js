@@ -1,6 +1,6 @@
 "use strict";
-const bcrypt = require("bcrypt");
 const { Model } = require("sequelize");
+const bcrypt = require("bcrypt");
 module.exports = (sequelize, DataTypes) => {
   class user extends Model {
     /**
@@ -9,7 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      models.user.hasOne(models.profile);
+      models.user.hasOne(models.profile, {
+        onDelete: "cascade",
+        onUpdate: "cascade",
+        hooks: true,
+      });
     }
   }
   user.init(
