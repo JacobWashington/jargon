@@ -29,5 +29,3 @@ sr.reveal(".home__img", { delay: 400 });
 
 /*SCROLL REGISTER*/
 sr.reveal(".register__input", { interval: 200 });
-
-/*SCROLL SIGNIN*/
