@@ -1,19 +1,12 @@
 {
-  "development": {
-    "database": "jargon_development",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
-  },
-  "test": {
-    "database": "jargon_test",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
-  },
   "production": {
-    "username": "halfw",
-    "password": "JimmyB1203!!",
-    "database": "jargon_production",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "dialectOptions": {
+        "ssl": {
+          "require": true,
+          "rejectUnauthorized": false
+        }
+      }
   }
 }
