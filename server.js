@@ -5,6 +5,7 @@ const session = require("express-session");
 // const passport = require('./config/ppConfig'); //
 const flash = require("connect-flash");
 const axios = require("axios");
+const controllers = require("./controllers");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -17,6 +18,7 @@ app.use(layouts);
 
 // Session Middleware
 
+//move to GET Route w/signin
 let newsObj;
 axios
   .get(
@@ -26,9 +28,8 @@ axios
     newsObj = obj.data;
   });
 
-app.get("/signin", (req, res) => {
-  res.render("profile", { newsObj });
-});
+//routes
+app.use("/register", controllers.register);
 
 app.get("/", (req, res) => {
   res.render("landingPage");

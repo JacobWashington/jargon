@@ -133,6 +133,14 @@ img {
   align-items: center;
   font-weight: var(--font-semi);
 }
+
+.showLogin {
+  right: 0;
+}
+
+.hide {
+  display: none;
+}
 @media screen and (max-width: 768px) {
   .nav__menu {
     position: fixed;
@@ -214,6 +222,9 @@ img {
 }
 
 /*===== REGISTER =====*/
+.register__container{
+  align-content: center;
+}
 .register__input {
   width: 100%;
   font-size: var(--normal-font-size);
@@ -231,6 +242,7 @@ img {
   font-size: var(--normal-font-size);
   cursor: pointer;
   margin-left: auto;
+  margin-right: auto;
 }
 
 /*BUTTONS*/
@@ -244,6 +256,30 @@ img {
 }
 .button:hover {
   box-shadow: 0 10px 36px rgba(0, 0, 0, 0.15);
+}
+
+.buttonSignIn {
+  display: inline-block;
+  border: none;
+  outline: none;
+  font-size: var(--normal-font-size);
+  cursor: pointer;
+  margin-left: auto;
+  background-color: var(--first-color);
+  color: #fff;
+}
+
+.buttonSignIn:hover {
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.15);
+}
+
+.signinInput{
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid var(--second-color);
+  outline: none;
 }
 
 /* ===== MEDIA QUERIES=====*/

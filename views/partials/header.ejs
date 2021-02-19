@@ -5,11 +5,17 @@
         </div>
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
-                <li class="nav__item"><a href="signin" class="nav__link">Sign In</a></li>
+                <li class="nav__item"><a href="#signin" class="nav__link" id="signin">Sign In</a></li>
                 <li class="nav__item"><a href="#register" class="nav__link">Register</a></li>
             </ul>
         </div>
-
+        <div class="login__container bd-gri hide" id="login">
+            <form action="signin" class="login__form" method="POST">
+                <input class="signin__input" type="email" placeholder="Email" class="login__input">
+                <input class="signin__input" type="password" placeholder="Password" class="login__input">
+                <input class="signin__input" type="submit" value="SignIn" id="signIn" class="buttonSignIn"></input>
+            </form>
+        </div>
         <div class="nav__toggle" id="nav-toggle">
             <i class='bx bx-menu'></i>
         </div>
