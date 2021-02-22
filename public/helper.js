@@ -1,8 +1,9 @@
 /*===== MENU SHOW =====*/
 
 const toggle = document.getElementById("nav-toggle");
-const signIn = document.getElementById("signin");
-const signInForm = document.getElementById("login");
+const signIn = document.getElementById("signinBtn");
+const signInForm = document.getElementById("signin");
+const logout = document.getElementById('logoutBtn');
 const nav = document.getElementById("nav-menu");
 
 toggle.addEventListener("click", () => {
@@ -28,4 +29,4 @@ sr.reveal(".button", { delay: 200 });
 sr.reveal(".home__img", { delay: 400 });
 
 /*SCROLL REGISTER*/
-sr.reveal(".register__input", { interval: 200 });
+sr.reveal(".signup__input", { interval: 200 });

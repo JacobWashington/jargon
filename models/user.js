@@ -1,6 +1,8 @@
-"use strict";
-const { Model } = require("sequelize");
-const bcrypt = require("bcrypt");
+'use strict';
+const bcrypt = require('bcrypt');
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class user extends Model {
     /**
@@ -9,79 +11,73 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      models.user.hasOne(models.profile, {
-        onDelete: "cascade",
-        onUpdate: "cascade",
-        hooks: true,
-      });
+      // define association here
     }
-  }
-  user.init(
-    {
-      firstName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: {
-            args: [1, 99],
-            msg: "First name must contain between 1 and 99 characters",
-          },
-        },
-      },
-      lastName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: {
-            args: [1, 99],
-            msg: "Last name must contain between 1 and 99 characters",
-          },
-        },
-      },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          isEmail: {
-            msg: "Must be a valid email",
-          },
-        },
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: {
-            args: [6, 25],
-            msg: "Password must contain between 6 and 25 characters",
-          },
-        },
-      },
+  };
+  user.init({
+    firstName: {
+      type: DataTypes.STRING,
+      validate: {
+       len: {
+        args: [1,99],
+        msg: 'First name must be between 1 and 99 characters'
+       }
+      }
     },
-    {
-      sequelize,
-      modelName: "user",
+    lastName: {
+      type: DataTypes.STRING,
+      validate: {
+       len: {
+        args: [1,99],
+        msg: 'First name must be between 1 and 99 characters'
+       }
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: { // does a boolean check
+          msg: 'Invalid email'
+        }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [8,99],
+          msg: 'Password must be between 8 and 99 characters'
+        }
+      }
     }
-  );
-
-  user.addHook("beforeCreate", (pendingUser) => {
-    let hash = bcrypt.hashSync(pendingUser.password, 12);
-    pendingUser.password = hash;
+  }, {
+    sequelize,
+    modelName: 'user',
   });
 
-  user.prototype.validPassword = function (typedPassword) {
-    let isCorrectPassword = bcrypt.compareSync(typedPassword, this.password);
+  // Before a user is created, we are encrypting the password and using hash in its place
+  user.addHook('beforeCreate', (pendingUser) => { // pendingUser is object that gets passed to DB
+    // Bcrypt is going to hash the password
+    let hash = bcrypt.hashSync(pendingUser.password, 12); //
+    pendingUser.password = hash; // this will go to the DB
+  });
 
+  // checking the password on Sign-In and comparing to the hashed password in the DB
+  user.prototype.validPassword = function(typedPassword) {
+    let isCorrectPassword = bcrypt.compareSync(typedPassword, this.password); // check to see if password is correct.
+    
     return isCorrectPassword;
-  };
+  }
 
-  user.prototype.toJSON = function () {
-    let userData = this.get();
-    delete userData.password;
-
+  // return an object from the database of the user without the encrypted password
+  user.prototype.toJSON = function() {
+    let userData = this.get(); // 
+    delete userData.password; // it doesn't delete password from database, only removes it. 
+    
     return userData;
-  };
+  }
 
-  return user;
+  return user; // above here
 };
+
+

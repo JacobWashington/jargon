@@ -141,6 +141,7 @@ img {
 .hide {
   display: none;
 }
+
 @media screen and (max-width: 768px) {
   .nav__menu {
     position: fixed;
@@ -157,6 +158,7 @@ img {
   margin-bottom: var(--mb-4);
 }
 .nav__link {
+  text-decoration: none;
   position: relative;
   color: #fff;
 }
@@ -173,6 +175,7 @@ img {
   background-color: var(--first-color);
 }
 .nav__logo {
+  text-decoration: none;
   color: var(--second-color);
 }
 .nav__toggle {
@@ -219,11 +222,11 @@ img {
   margin-bottom: 1rem;
 }
 
-/*===== REGISTER =====*/
-.register__container{
+/*===== SIGNUP =====*/
+.signup__container{
   align-content: center;
 }
-.register__input {
+.signup__input {
   width: 100%;
   font-size: var(--normal-font-size);
   font-weight: var(--font-semi);
@@ -233,7 +236,7 @@ img {
   outline: none;
   margin-bottom: var(--mb-4);
 }
-.register__button {
+.signup__button {
   display: block;
   border: none;
   outline: none;
@@ -256,7 +259,7 @@ img {
   box-shadow: 0 10px 36px rgba(0, 0, 0, 0.15);
 }
 
-.buttonSignIn {
+.buttonSignin {
   display: inline-block;
   border: none;
   outline: none;
@@ -267,7 +270,7 @@ img {
   color: #fff;
 }
 
-.buttonSignIn:hover {
+.buttonSignin:hover {
   box-shadow: 0 10px 36px rgba(0, 0, 0, 0.15);
 }
 
@@ -350,10 +353,10 @@ img {
     top: 10%;
     right: 0;
   }
-  .register__form {
+  .signup__form {
     width: 360px;
   }
-  .register__container {
+  .signup__container {
     justify-items: center;
     margin-bottom: 15rem;
   }

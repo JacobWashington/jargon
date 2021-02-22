@@ -1,25 +1,28 @@
-require("dotenv").config();
-const express = require("express");
-const layouts = require("express-ejs-layouts");
-const session = require("express-session");
-const passport = require('./config/ppConfig');
-const flash = require("connect-flash");
-const axios = require("axios");
-const controllers = require("./controllers");
+require('dotenv').config();
+const express = require('express');
+const layouts = require('express-ejs-layouts');
+const session = require('express-session');
+const passport = require('./config/ppConfig'); //
+const flash = require('connect-flash');
 
 const app = express();
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
 
+// Session 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 const isLoggedIn = require('./middleware/isLoggedIn');
 
 // MIDDLEWARE
-app.use(require("morgan")("dev"));
+app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + '/public'));
 app.use(layouts);
 
 // Session Middleware
+
+// secret: What we actually will be giving the user on our site as a session cookie
+// resave: Save the session even if it's modified, make this false
+// saveUninitialized: If we have a new session, we save it, therefore making that true
 
 const sessionObject = {
   secret: SECRET_SESSION,
@@ -39,26 +42,16 @@ app.use((req, res, next) => {
   next();
 });
 
-//move to GET Route w/signin
-let newsObj;
-axios
-  .get(
-    `http://api.mediastack.com/v1/news?access_key=${process.env.MEDIASTACK_API_KEY}&sources=cnn,bbc&languages=en&categories=technology,science`
-  )
-  .then((obj) => {
-    newsObj = obj.data;
-  });
+// Controllers
+app.use('/auth', require('./controllers/auth'));
 
-//controllers
-app.use("/auth", require('./controllers/auth'));
-
-app.get("/", (req, res) => {
-  res.render("landingPage");
+app.get('/', (req, res) => {
+  res.render('landingPage');
 });
 
 app.get('/profile', isLoggedIn, (req, res) => {
-  const { id, name, email } = req.user.get(); 
-  res.render('profile', { id, name, email });
+  const { id, firstName, lastName, email } = req.user.get(); 
+  res.render('profile', { id, firstName, lastName, email });
 });
 
 const PORT = process.env.PORT || 3000;
