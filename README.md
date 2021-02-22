@@ -2,7 +2,9 @@
 
 ## Description
 
-**jargon** is an employment-oriented networking application that connects veterans in tech to training and employment resources.
+One of the greatest challenges Veterans face when breaking into tech is envisioning themselves within the industry. Coming from a notoriously ridged culture, veterans are often intimidated by the seemingly relaxed atmosphere present in tech. With fears and insecurities swarming, sometimes it helps to find others who speak the **jargon**. 
+
+**jargon** is a networking and employment oriented application that connects veterans in tech to colleagues and peers, mentors and employers, training resources, and job opportunities. By creating a networking community of vets in tech, **jargon** breaks down the barriers of entry many veterans face, and narrows the market for veterans seeking careers and connections within the industry. 
 
 ## User Stories
 
